@@ -1,32 +1,7 @@
-import { Container, Typography, Box }from '@material-ui/core'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import Layout from '../components/Layout'
 import Link from 'next/link'
 
-
-// Create a theme instance.
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#455a64',
-      light:'#718792',
-      dark:'#1c313a'
-    },
-    secondary: {
-      main: '#ff6d00',
-      light:'#ff9e40',
-      dark: '#c43c00'
-    },
-    error: {
-      main: '#ef5350',
-    },
-    background: {
-      default: '#f5f5f5',
-    },
-  },
-});
-
-export default function Index() {
+const Index = (props) => {
   // react Hooks for user state 
 
   // login page = ?
@@ -37,13 +12,16 @@ export default function Index() {
   // * ?? what authentication will you use 
   // * ??
   return (
-    <ThemeProvider theme={theme}>
       <Layout>
-        <h2>Welcome to HQA</h2>
-        <Link href="https://medium.com/javascript-in-plain-english/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa">
-        <a>Click</a>
+        <h2 color='primary'>Welcome to HQA</h2>
+        <Link href="/wiki">
+          <a>Wiki</a>
+        </Link>
+        <br />
+        <Link href="/sb/test">
+          <a>Test</a>
         </Link>
       </Layout>
-    </ThemeProvider>
   );
 }
+export default Index;

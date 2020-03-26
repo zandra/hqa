@@ -1,8 +1,9 @@
 import App from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider } from 'styled-components'
-import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from './theme';
+// import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import muiTheme from '../theme';
 
 export default class MyApp extends App {
   // remove it here
@@ -14,7 +15,7 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={muiTheme}>
         <Component {...pageProps} />
       </ThemeProvider>
     )

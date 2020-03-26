@@ -1,14 +1,13 @@
 import { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Box, Container  } from '@material-ui/core'
 import { Header, Footer } from './layouts'
 
-export default function Layout() {
+export default function Layout(props) {
 
   return (
     <Fragment>
      <Header />
+     {props.children}
      <Footer />
     </Fragment>
   );

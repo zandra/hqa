@@ -1,8 +1,7 @@
-import React from 'react'
+import { Fragment } from 'react'
 import NextDocument from 'next/document'
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/styles'
-
 
 export default class Document extends NextDocument {
   static async getInitialProps (ctx) {
@@ -21,11 +20,11 @@ export default class Document extends NextDocument {
       return {
         ...initialProps,
         styles: [
-          <React.Fragment key="styles">
+          <Fragment key="styles">
             {initialProps.styles}
             {materialUiSheets.getStyleElement()}
             {styledComponentSheet.getStyleElement()}
-          </React.Fragment>,
+          </Fragment>,
         ],
       }
     } finally {

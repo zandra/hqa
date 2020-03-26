@@ -35,7 +35,7 @@ return (
         <MenuIcon />
       </IconButton>
       <Typography variant="h6" className={classes.title}>
-        Photos
+        Home
       </Typography>
       {logged && (
         <div>
