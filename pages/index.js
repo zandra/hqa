@@ -1,6 +1,8 @@
 import Layout from '../components/Layout'
+import { Grid, Paper, Typography } from '@material-ui/core'
 import Link from 'next/link'
 
+// root > index.js
 const Index = (props) => {
   // react Hooks for user state 
 
@@ -12,16 +14,28 @@ const Index = (props) => {
   // * ?? what authentication will you use 
   // * ??
   return (
-      <Layout>
-        <h2 color='primary'>Welcome to HQA</h2>
-        <Link href="/wiki">
-          <a>Wiki</a>
-        </Link>
-        <br />
-        <Link href="/sb/test">
-          <a>Test</a>
-        </Link>
-      </Layout>
+    <Layout>
+      <Typography variant="h3" align='center' gutterBottom>
+          Welcome to HQA
+      </Typography>
+      <Grid container justify='space-around' spacing={3}>
+        <Grid item>
+          <Typography>
+            <Link href="/wiki">
+              <a>Wiki</a>
+            </Link>
+            <Link href="/sb/test">
+            <a>Test</a>
+          </Link>
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Typography>
+            Second Grid
+          </Typography>
+        </Grid>
+      </Grid>
+    </Layout>
   );
 }
 export default Index;

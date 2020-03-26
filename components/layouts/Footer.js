@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { Typography, Paper, Box, Grid } from '@material-ui/core'
+import { Typography, Box, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import theme from '../../theme'
 
@@ -14,7 +13,6 @@ const Copyright = props =>
     <Typography variant="body2" align="center">
       {`Copyright ©  `}
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
 
 export default props => {
