@@ -2,7 +2,7 @@
 import Link from '../../components/styled/StyledLink'
 import Layout from '../../components/Layout'
 import { Grid, Typography, List, ListItem, ListItemText, makeStyles } from '@material-ui/core'
-import { wikiNav } from '../store'
+import { wikiNav } from '../../store'
 
 const useStyles = makeStyles({
   container: {
