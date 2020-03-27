@@ -1,40 +1,55 @@
 // Wiki > index.js
-import Link from 'next/link'
-import { Grid, Typography, Paper, List, ListItem, ListItemText } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
+import Link from '../../components/styled/StyledLink'
+import Layout from '../../components/Layout'
+import { Grid, Typography, List, ListItem, ListItemText, makeStyles } from '@material-ui/core'
+import { wikiNav } from '../store'
 
 const useStyles = makeStyles({
   container: {
     backgroundColor: '#e3f2fd'
   },
-  paper: {
-    border: '1px solid grey'
+  topicsList: {
+    backgroundColor: 'green'
   }
 })
 
-const Index = (props) => {
-  const classes = useStyles();
-  return (
-  <Grid container space={2} direction='row' className={classes.container}>
+const topNav = wikiNav.filter(item => item.type === 'wiki')
 
-    {/* Leftmost item
-    - import WikiIndex from store 
-    -   
-    
-    */}
-      <Grid item m={3} s={6}>
-        <Typography variant='h4'>Hello</Typography>
-        <List >
-        <ListItem>
-          <ListItemText
-          />
-        </ListItem>,
-    </List>
-    </Grid>
-    <Grid item m={3} s={6}>
-      <Typography variant='h4'>Hello</Typography>
-    </Grid>
-  </Grid>
-  );
+// Add page Hero or banner
+
+const Page = (props) => {
+  const classes = useStyles()
+  return (
+    <Layout>
+      <Grid container
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+        className={classes.container}
+      >
+        {/* First grid-item { left }:  Wiki Nav   */}
+        <Grid item m={3} id="wikiNav">
+          <List className={classes.topicsList}>
+            <Typography variant='subtitle1'>Modules</Typography>
+            {topNav.map(item =>
+              <ListItem button={true} key={item.key}>
+                <ListItemText
+                  primary={item.title}
+                />
+              </ListItem>
+            )}
+          </List>
+        </Grid>
+        {/* Second grid-item { middle }:  Selected Topic blurb   */}
+        <Grid item m={3} s={6}>
+          <Typography variant='h4'>Hello</Typography>
+        </Grid>
+        {/* Third grid-item { right }:  Selected Topic Anatomy   */}
+        <Grid item m={3} s={6}>
+          <Typography variant='h4'>Hello</Typography>
+        </Grid>
+      </Grid>
+    </Layout>
+  )
 }
-export default Index;
+export default Page

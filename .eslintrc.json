@@ -10,7 +10,7 @@
         "standard"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "warn"
     },
     "globals": {
         "Atomics": "readonly",
@@ -26,6 +26,5 @@
     },
     "plugins": [
         "react"
-    ],
-    "rules": {}
+    ]
 }
