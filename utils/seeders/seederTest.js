@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = global.Promise
 
-const Test = require('./models/test')
+const Test = require('../../models/tests')
 
 const testSeed = [
   {
@@ -30,7 +30,7 @@ const deleteData = async () => {
 const seedData = async () => {
   try {
     await Test.insertMany(testSeed)
-    console.log(' 🌱 🌱 🌱 done. to delete data, run\n\n\t npm run unseed\n\n')
+    console.log(' done 🌱 🌱 🌱 To drop data, run\n\n\t npm run unseed\n\n')
     process.exit()
   } catch (e) {
     console.log('Error 🐼')

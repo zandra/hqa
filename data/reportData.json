@@ -3,6 +3,7 @@
     "key": "sh1",
     "title": "Complete Shipping Report",
     "category": "shipping",
+    "about": null,
     "fields": [
       {
       "name": "Ship Date",
@@ -146,6 +147,7 @@
     "key": "sh2",
     "title": "Shipping Destinations",
     "category": "shipping",
+    "about": null,
     "fields": [
       {
         "name": "Ship Date",
@@ -214,6 +216,7 @@
     "key": "sh3",
     "title":"Shipping Services Report",
     "category": "shipping",
+    "about": null,
     "fields": [
       {
         "name":"Total Shipping Cost",
@@ -232,6 +235,7 @@
     "key": "sh4",
     "title":"Shipment Margin (All)",
     "category": "shipping",
+    "about": null,
     "fields": [
       {
         "name":"Total Shipping Cost",
