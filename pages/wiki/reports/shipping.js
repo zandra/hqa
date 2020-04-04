@@ -30,7 +30,7 @@ export default function ShippingReport (props) {
       />
       <ReportFieldsCard
         title={`${report.title} Field List`}
-        fields={[...report.fields]}
+        // fields={[...report.fields]}
         className={classes.card}
       />
     </ReportsLayout>

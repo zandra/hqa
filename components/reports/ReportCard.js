@@ -47,17 +47,13 @@ export default function ReportCard (props) {
       />
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-            {'Hi'}{'   '}
-            {props.title}
-            <Divider />
-            {props.id}
-            <Divider />
-            {props.category}
-            <Divider />
-            {props.selected}
-            <Divider />
-          </Typography>
+          <Typography paragraph>Title: {props.title}</Typography>
+          <Divider />
+          <Typography paragraph>ID: {props.key}</Typography>
+          <Divider />
+          <Typography paragraph>Category: {props.category}</Typography>
+          <Divider />
+          <Typography paragraph>Category: {props.selected}</Typography>
         </CardContent>
       </Collapse>
     </Card>

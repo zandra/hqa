@@ -6,7 +6,8 @@ import { ReportsLayout } from '../../../components/layouts'
 import { ReportCard, ReportFieldsCard } from '../../../components/reports'
 
 const useStyles = makeStyles({
-  container: {}
+  container: {},
+  card: {}
 })
 
 function ShippingReport (props) {
@@ -26,7 +27,7 @@ function ShippingReport (props) {
       />
       <ReportFieldsCard
         title={`${report.title} Field List`}
-        fields={report.fields}
+        // fields={[...report.fields]}
         className={classes.card}
       />
     </ReportsLayout>
