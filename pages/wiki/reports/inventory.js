@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   container: {}
 })
 
-export default function ShippingReport (props) {
+function ShippingReport (props) {
   const classes = useStyles()
   const { query } = useRouter()
 
@@ -32,3 +32,5 @@ export default function ShippingReport (props) {
     </ReportsLayout>
   )
 }
+
+export default ShippingReport
