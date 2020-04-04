@@ -1,0 +1,16 @@
+[
+  {
+  "key": "rpt",
+  "title": "Reports",
+  "subtopics": ["Shipping Reports", "Product Sales", "Inventory Reports"]
+  },
+  {
+    "key": "im",
+    "title": "Products",
+    "subtopics": ["Product Catalogue", "Inventory Management"]
+  },
+  {
+    "key": "bt",
+    "title": "Branded Tracking"
+  }
+]

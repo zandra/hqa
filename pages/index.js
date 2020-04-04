@@ -1,21 +1,20 @@
 // Root > index.js
 import Layout from '../components/Layout'
-import TopicLinks from '../components/TopicLinks'
-import { Grid, Typography, makeStyles } from '@material-ui/core'
-import Link from '../components/styled/StyledLink'
+import { Grid, Typography, Paper, makeStyles } from '@material-ui/core'
+import { Link } from '../components/wrapped'
+import Extension from '../components/extensions/HackerNews'
+import { ipsum } from '../store'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
-  },
-  container: {
-    border: '1px solid black'
   },
   grid: {
     border: '1px solid black'
   },
-  link: {
-    color: theme.palette.primary.contrastText
+  paper: {
+    color: theme.palette.primary.background,
+    margin: 10,
+    padding: 10
   }
 }))
 
@@ -32,30 +31,22 @@ const Index = (props) => {
   // * ??
   return (
     <Layout>
-      <div className={classes.root}>
-        <Grid container justify='space-between' spacing={1} className={classes.container}>
-          {/* First grid: 2/3 page */}
-          <Grid key="main" item xs s={9} className={classes.grid}>
+      <Grid container justify='space-between' spacing={2} className={classes.root}>
+        {/* First grid: 2/3 page */}
+        <Grid item key="main" xs={8} className={classes.grid}>
+          <Paper className={classes.paper}>
             <Typography variant="h4" align='center' gutterBottom>Welcome to HQA</Typography>
-
-            <Typography className={classes.link}>
-              <TopicLinks />
-              <Link href="/wiki" >
-                <a>Wiki</a>
-              </Link>
-              <Link href="/sb/test">
-                <a>Test</a>
-              </Link>
-            </Typography>
-          </Grid>
-          {/* User extensions */}
-          <Grid key="side" item xs s={4} className={classes.grid}>
-            <Typography>
-            User Extensions
-            </Typography>
-          </Grid>
+            <Typography paragraph>{ipsum.long}</Typography>
+          </Paper>
         </Grid>
-      </div>
+        {/* User extensions */}
+        <Grid item key="extensions" s={3} xs={4} className={classes.grid}>
+          <Paper className={classes.paper}>
+            <Typography>User Extensions</Typography>
+            <Extension />
+          </Paper>
+        </Grid>
+      </Grid>
     </Layout>
   )
 }
