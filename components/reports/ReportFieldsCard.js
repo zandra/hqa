@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 // TODO getInitialProps props to set fields
 
-export default function ReportFieldsCard ({ title, fields }) {
+function ReportFieldsCard ({ title, fields }) {
   const classes = useStyles()
   const [expanded, setExpanded] = useState(false)
 
@@ -33,7 +33,8 @@ export default function ReportFieldsCard ({ title, fields }) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        title={title}
+        title="Field List"
+        subheader={title}
         action={
           <IconButton
             className={clsx(classes.expand, {
@@ -50,14 +51,16 @@ export default function ReportFieldsCard ({ title, fields }) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            <ul>
-              {fields.map(f => (
+            {fields && fields.length > 1 ? fields.map(f => (
+              <ul>
                 <li>{f.name}</li>
-              ))}
-            </ul>
+              </ul>
+            )) : ' No field data' }
           </Typography>
         </CardContent>
       </Collapse>
     </Card>
   )
 }
+
+export default ReportFieldsCard

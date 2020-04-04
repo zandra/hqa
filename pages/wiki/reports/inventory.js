@@ -6,10 +6,11 @@ import { ReportsLayout } from '../../../components/layouts'
 import { ReportCard, ReportFieldsCard } from '../../../components/reports'
 
 const useStyles = makeStyles({
-  container: {}
+  container: {},
+  card: {}
 })
 
-export default function ShippingReport (props) {
+function ShippingReport (props) {
   const classes = useStyles()
   const { query } = useRouter()
 
@@ -26,9 +27,11 @@ export default function ShippingReport (props) {
       />
       <ReportFieldsCard
         title={`${report.title} Field List`}
-        fields={report.fields}
+        // fields={[...report.fields]}
         className={classes.card}
       />
     </ReportsLayout>
   )
 }
+
+export default ShippingReport
