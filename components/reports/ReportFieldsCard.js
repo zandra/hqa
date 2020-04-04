@@ -20,10 +20,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function ReportFieldsCard (props) {
+// TODO getInitialProps props to set fields
+
+export default function ReportFieldsCard ({ title, fields }) {
   const classes = useStyles()
   const [expanded, setExpanded] = useState(false)
-  // const [fields, setFields] = React.useState()
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -32,7 +33,7 @@ export default function ReportFieldsCard (props) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        title={props.title}
+        title={title}
         action={
           <IconButton
             className={clsx(classes.expand, {
@@ -49,13 +50,11 @@ export default function ReportFieldsCard (props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            {'Hi'}{'   '}
-            {/* <ul>
-              {props.fields.map(f => (
+            <ul>
+              {fields.map(f => (
                 <li>{f.name}</li>
               ))}
-            </ul> */}
-            {JSON.stringify(props.fields)}
+            </ul>
           </Typography>
         </CardContent>
       </Collapse>
