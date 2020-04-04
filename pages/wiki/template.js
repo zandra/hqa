@@ -1,5 +1,3 @@
-// Wiki > index.js
-import { Link, ListItemLink } from '../../components/wrapped'
 import Layout from '../../components/Layout'
 import { WikiNav } from '../../components/layouts'
 import { Grid, makeStyles, Typography, Paper } from '@material-ui/core'
@@ -15,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Page = (props) => {
+const Template = (props) => {
   const classes = useStyles()
   return (
     <Layout>
@@ -31,7 +29,7 @@ const Page = (props) => {
         {/* Second grid-item { middle }:  Selected Topic blurb   */}
         <Grid item xs={8} className={classes.text}>
           <Paper className={classes.paper}>
-            <Typography variant='h4' >Shipping Easy</Typography>
+            <Typography variant='h4' >{props.header}</Typography>
             <Typography paragraph>{ipsum.long}</Typography>
           </Paper>
         </Grid>
@@ -39,4 +37,4 @@ const Page = (props) => {
     </Layout>
   )
 }
-export default Page
+export default Template

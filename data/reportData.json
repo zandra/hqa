@@ -1,0 +1,302 @@
+[
+  { 
+    "key": "sh1",
+    "title": "Complete Shipping Report",
+    "category": "shipping",
+    "fields": [
+      {
+      "name": "Ship Date",
+      "attributes": [],
+      "inventory": "false" 
+      },
+      {
+      "name": "User",
+      "attributes": [],
+      "inventory": "false" 
+      },
+      {
+        "name": "Order Date",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Order Total",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Store",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Recipient Billing Address",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Recipient Shipping Address",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Email Address",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Carrier",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name":"Rate Provider",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Service Type",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Package Type",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Confirmation Option",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Quantity",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Weight (oz)",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Zone",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name":"Destination Country",
+        "attributes": [],
+        "inventory": "false" 
+      },
+      {
+        "name": "Destination City",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Destination State/Province",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Tracking Number",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Shipping Paid (by customer)",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Postage Cost",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Insurance Cost",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Total Shipping Cost",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Shipping Margin",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "SKU",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Item Name",
+        "attributes": [],
+        "inventory": "false"
+      }
+    ],
+    "configs": []
+  },
+  {
+    "key": "sh2",
+    "title": "Shipping Destinations",
+    "category": "shipping",
+    "fields": [
+      {
+        "name": "Ship Date",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+      "name":"Store",
+      "attributes": [],
+      "inventory": "false"
+      },
+      {
+        "name": "Order Number",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Recipient",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Weight (oz)",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Zone",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name": "Destination Country",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Destination City",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Destination State/Province",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"Postage Cost",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+      "name":"Insurance Cost",
+      "attributes": [],
+      "inventory": "false"
+      },
+      {
+        "name":"Total Shipping Cost",
+        "attributes": [],
+        "inventory": "false"
+      }
+    ],
+    "configs": []
+  },
+  { 
+    "key": "sh3",
+    "title":"Shipping Services Report",
+    "category": "shipping",
+    "fields": [
+      {
+        "name":"Total Shipping Cost",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"{day}",
+        "attributes": [],
+        "inventory": "false"
+      }
+    ],
+    "configs": []
+  },
+  {
+    "key": "sh4",
+    "title":"Shipment Margin (All)",
+    "category": "shipping",
+    "fields": [
+      {
+        "name":"Total Shipping Cost",
+        "attributes": [],
+        "inventory": "false"
+      },
+      {
+        "name":"{day}",
+        "attributes": [],
+        "inventory": "false"
+      }
+    ],
+    "configs": []
+  },
+  {
+    "key": "im2",
+    "title":"Inventory Low Stock",
+    "category": "inventory",
+    "fields": [
+      {
+        "name":"SKU",
+        "attributes": [],
+        "inventory": "true"
+      },
+      {
+        "name":"Name",
+        "attributes": [],
+        "inventory": "true"
+      },
+      {
+        "name":"Unit Wholesale Price",
+        "attributes": ["Product 'Wholesale Price'"],
+        "inventory": "true"
+      },
+      {
+        "name":"{Customer} Stock",
+        "attributes": [],
+        "inventory": "true"
+      },
+      {
+        "name":"{Customer} Committed",
+        "attributes": [],
+        "inventory": "true"
+      },
+      {
+        "name":"{Customer} Available",
+        "attributes": [],
+        "inventory": "true"
+      },
+      {
+        "name":"{Customer} Inventory Value",
+        "attributes": ["Sums Product 'Wholesale Price'"],
+        "inventory": "true"
+      },
+      {
+        "name":"Category",
+        "attributes": [],
+        "inventory": "true"
+      },
+      {
+        "name":"Warehouse Bin",
+        "attributes": [],
+        "inventory": "true"
+      }
+    ],
+    "configs": []
+  }
+]
