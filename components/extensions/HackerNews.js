@@ -26,7 +26,6 @@ export async function getInitialProps () {
   const myArr = data.slice(19)
 
   const links = myArr.map(id => `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
-  console.log(links)
 
   // Pass data to the page via props
   return { props: { links } }

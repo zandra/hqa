@@ -3,7 +3,8 @@ import Layout from '../components/Layout'
 import { Grid, Typography, Paper, makeStyles } from '@material-ui/core'
 import { Link } from '../components/wrapped'
 import Extension from '../components/extensions/HackerNews'
-import { ipsum } from '../store'
+import TopicCard from '../components/TopicCard'
+import { wiki } from '../store'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,11 +16,21 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.background,
     margin: 10,
     padding: 10
+  },
+  hqa: {
+    textAlign: 'center'
+  },
+  logo: {
+    minHeight: 600,
+    fontStyle: 'bold'
   }
 }))
 
 const Index = (props) => {
   const classes = useStyles()
+
+  const tt = wiki.map(w => w.title)
+  console.log(tt)
   // react Hooks for user state
 
   // login page = ?
@@ -33,18 +44,16 @@ const Index = (props) => {
     <Layout>
       <Grid container justify='space-between' spacing={2} className={classes.root}>
         {/* First grid: 2/3 page */}
-        <Grid item key="main" xs={8} className={classes.grid}>
-          <Paper className={classes.paper}>
-            <Typography variant="h4" align='center' gutterBottom>Welcome to HQA</Typography>
-            <Typography paragraph>{ipsum.long}</Typography>
+        <Grid item key="logo" xs={8} alignContent="center" className={classes.hqa}>
+          <Paper className={classes.logo} >
+            <Typography variant="h2" className={classes.name}>HQA</Typography>
           </Paper>
         </Grid>
         {/* User extensions */}
         <Grid item key="extensions" s={3} xs={4} className={classes.grid}>
-          <Paper className={classes.paper}>
-            <Typography>User Extensions</Typography>
-            <Extension />
-          </Paper>
+          {wiki.map(t => (
+            <TopicCard name={t.title} />
+          ))}
         </Grid>
       </Grid>
     </Layout>
