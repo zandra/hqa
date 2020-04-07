@@ -1,21 +1,21 @@
-import { makeStyles, Typography, Card, CardContent, CardActions, Button } from '@material-ui/core'
+import { makeStyles, Typography, Card, CardContent, CardActions } from '@material-ui/core'
 import { Link } from './wrapped'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: 400
+    minWidth: 225,
+    backgroundColor: theme.palette.primary.light
   },
   title: {
-    fontSize: 14
+    fontSize: 18
   },
   link: {
-    align: 'right'
+    color: theme.palette.secondary.main
   }
-})
+}))
 
 export default function TopicCard (props) {
   const classes = useStyles()
-  console.log(props.name)
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -23,8 +23,8 @@ export default function TopicCard (props) {
           {props.name}
         </Typography>
         <CardActions>
-          <Typography align='right' className={classes.link}>
-            <Link href='#'>Go</Link>
+          <Typography>
+            <Link className={classes.link} href={props.src}>Go</Link>
           </Typography>
         </CardActions>
       </CardContent>

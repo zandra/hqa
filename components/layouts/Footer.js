@@ -1,12 +1,14 @@
-import { Typography, Box, Grid, IconButton } from '@material-ui/core'
+import { Typography, Grid, IconButton } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import theme from '../../theme'
 
 const useStyles = makeStyles({
-  box: {
+  root: {
     backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
+    marginTop: '16px',
+    padding: '0 18px'
   },
   typography: {
     variant: 'subtitle1',
@@ -27,24 +29,19 @@ const Copyright = props =>
 export default props => {
   const classes = useStyles()
   return (
-    <Box
-      className={classes.box}
-      p={3}
-    >
-      <Grid container spacing={3} justify='space-between' alignItems='center'>
-        <Grid item>
-          <Typography className={classes.typography}>ShippingEasy QA</Typography>
-        </Grid>
-        <Grid item>
-          <Copyright />
-        </Grid>
-        <Grid item>
-          <IconButton href="https://github.com/zandra/hqa" target="_blank" className={classes.icon}>
-            <GitHubIcon />
-            <Typography variant="srOnly">Github Link</Typography>
-          </IconButton>
-        </Grid>
+    <Grid container spacing={3} justify='space-between' alignItems='center' className={classes.root}>
+      <Grid item>
+        <Typography className={classes.typography}>ShippingEasy QA</Typography>
       </Grid>
-    </Box>
+      <Grid item>
+        <Copyright />
+      </Grid>
+      <Grid item>
+        <IconButton href="https://github.com/zandra/hqa" target="_blank" className={classes.icon}>
+          <GitHubIcon />
+          <Typography variant="srOnly">Github Link</Typography>
+        </IconButton>
+      </Grid>
+    </Grid>
   )
 }

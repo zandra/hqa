@@ -1,11 +1,11 @@
 import { Fragment } from 'react'
 import { Header, Footer } from './layouts'
 
-export default function Layout (props) {
+export default function Layout ({ children }) {
   return (
     <Fragment>
       <Header />
-      {props.children}
+      {children}
       <Footer />
     </Fragment>
   )

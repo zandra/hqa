@@ -1,8 +1,10 @@
+import { useState, useEffect } from 'react'
 import { Link } from '../wrapped'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useMediaQuery } from '@material-ui/core/styles'
 import { Grid, AppBar, Toolbar, Menu, MenuItem, IconButton, Typography } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import Brightness2Icon from '@material-ui/icons/Brightness2' // Moon -> show on light
+import Brightness7Icon from '@material-ui/icons/Brightness7' // Sun -> show on dark
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,12 +24,30 @@ const useStyles = makeStyles(theme => ({
 })
 )
 
+// useMediaQuery const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+// useState to set preferredMode
+// create a Toggle > a handler for the switch event
+// create an switch event
+
 export default function Header () {
   const classes = useStyles()
-  const [logged, setLogged] = React.useState(true)
+  const [logged, setLogged] = useState(true)
 
-  // Right side profile nav
-  const [anchorEl, setAnchorEl] = React.useState(null)
+  // Light : Dark mode
+  const [mode, setMode] = useState('light')
+
+  const handlePreferredMode = () => {
+    if (mode === 'light') setMode('dark')
+    if (mode === 'dark') setMode('light')
+  }
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('prefers-color-scheme', mode)
+    // console.log(document.documentElement.style)
+  })
+
+  // Account menu drawer
+  const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -36,8 +56,9 @@ export default function Header () {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         <Grid container spacing={2} className={classes.nav}>
           <Grid item>
@@ -56,6 +77,16 @@ export default function Header () {
             </Typography>
           </Grid>
         </Grid>
+        <div className={classes.configs}>
+          <IconButton
+            color="inherit"
+            onClick={handlePreferredMode}
+          >
+            { mode && mode === 'dark' ? <Brightness2Icon />
+              : <Brightness7Icon />
+            }
+          </IconButton>
+        </div>
         {logged && (
           <div className={classes.profile}>
             <IconButton
@@ -83,6 +114,7 @@ export default function Header () {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>Use Extensions</MenuItem>
             </Menu>
           </div>
         )}
