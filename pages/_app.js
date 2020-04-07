@@ -1,24 +1,18 @@
-import App from 'next/app'
-import Head from 'next/head'
-// import { ThemeProvider } from 'styled-components'
-import { ThemeProvider } from '@material-ui/core/styles'
+import { useEffect, useState } from 'react'
+import { ThemeProvider, useMediaQuery, createMuiTheme } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import muiTheme from '../theme'
+import theme from '../theme'
 
-export default class MyApp extends App {
-  // remove it here
-  componentDidMount () {
+export default function MyApp ({ Component, pageProps }) {
+  useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles && jssStyles.parentNode) { jssStyles.parentNode.removeChild(jssStyles) }
-  }
+  }, [])
 
-  render () {
-    const { Component, pageProps } = this.props
-    return (
-      <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }

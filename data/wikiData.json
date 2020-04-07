@@ -2,15 +2,19 @@
   {
   "key": "rpt",
   "title": "Reports",
-  "subtopics": ["Shipping Reports", "Product Sales", "Inventory Reports"]
+  "subtopics": ["Shipping Reports", "Product Sales", "Inventory Reports"],
+  "route": "/wiki/reports"
   },
   {
     "key": "im",
     "title": "Products",
-    "subtopics": ["Product Catalogue", "Inventory Management"]
+    "subtopics": ["Product Catalogue", "Inventory Management"],
+    "route": "/wiki/im"
   },
   {
     "key": "bt",
-    "title": "Branded Tracking"
+    "title": "Branded Tracking",
+    "subtopics": ["Editor", "Config"],
+    "route": "/wiki/bt"
   }
 ]
