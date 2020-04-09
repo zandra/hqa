@@ -7,8 +7,10 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "seed": "node ./utils/seeders/seederReport.js",
-    "unseed": "node ./utils/seeders/seederReport.js --delete",
+    "report:seed": "node ./utils/seeders/seederReport.js",
+    "report:drop": "node ./utils/seeders/seederReport.js --delete",
+    "user:seed": "node ./utils/seeders/seederUser.js",
+    "user:drop": "node ./utils/seeders/seederUser.js --delete",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

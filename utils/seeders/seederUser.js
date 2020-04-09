@@ -3,34 +3,34 @@ const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = global.Promise
 
-const Test = require('../../models/tests')
+const User = require('../../models/users')
 
-const testSeed = [
+const userSeed = [
   {
-    name: 'Test 1',
-    number: 1
+    first_name: 'Demo',
+    last_name: 'User',
+    email: 'demo@hqa.com',
+    password: 'password'
   },
   {
-    name: 'Test 2',
-    number: 2
-  },
-  {
-    name: 'Test 3',
-    number: 3
+    first_name: 'Limited',
+    last_name: 'User',
+    email: 'limited@hqa.com',
+    password: 'password'
   }
 ]
 
 const deleteData = async () => {
   console.log('☔️ ☔️ ... dropping data')
-  await Test.deleteMany()
-  console.log('Data deleted. To seed, run\n\n\t npm run seed\n\n')
+  await User.deleteMany()
+  console.log('Data deleted. To seed, run\n\n\t npm run userseed\n\n')
   process.exit()
 }
 
 const seedData = async () => {
   try {
-    await Test.insertMany(testSeed)
-    console.log(' done 🌱 🌱 🌱 To drop data, run\n\n\t npm run unseed\n\n')
+    await User.insertMany(userSeed)
+    console.log(' done 🌱 🌱 🌱 To drop data, run\n\n\t npm run userdrop\n\n')
     process.exit()
   } catch (e) {
     console.log('Error 🐼')
