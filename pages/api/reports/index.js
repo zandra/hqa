@@ -1,4 +1,4 @@
-import database from '../../../middlewares/database.js'
+import connectDb from '../../../utils/database.js'
 import Report from '../../../models/reports'
 
 const handler = (req, res) => {
@@ -11,4 +11,4 @@ const handler = (req, res) => {
       res.status(401).send('.... awkward 🐢')
     })
 }
-export default database(handler)
+export default connectDb(handler)
