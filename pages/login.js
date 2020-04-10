@@ -1,5 +1,6 @@
 import { makeStyles, Container, Paper, Typography, TextField } from '@material-ui/core'
 import { Link } from '../components/wrapped'
+import { useState } from 'react'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function Login () {
   const classes = useStyles()
+  const [authenticated, setAuthenticated] = useState(false)
+
   return (
     <Container className={classes.root} fixed >
       <Paper className={classes.paper}>
