@@ -10,29 +10,27 @@ const handler = nextConnect()
 handler.use(middleware)
 
 handler.get(async (req, res) => {
-  User.find({})
-    .then(data => {
-      res.status(200).json(data)
-    })
-    .catch(e => {
-      console.log(e)
-      res.status(401).send('.... awkward 🐢')
-    })
+  const users = await User.find()
+  res.json(users)
 })
 // TODO add email validation
 // TODO pre-check to make sure email is unique
 
-// handler.post(async (req, res) => {
-//   const { name, email, password } = req.body
+handler.post(async (req, res) => {
+  const { name, email, password } = req.body
+  console.log(req.body)
 
-//   if (!name || !email || !password) {
-//     res.status(400).send('There\'s only three fields ... let\'s try this again')
-//     return
-//   }
-//   const hashedPassword = await bcrypt.hash(password, 10)
+  if (!name || !email || !password) {
+    res.status(400).send('There\'s only three fields ... let\'s try this again')
+    return
+  }
+  const hashedPassword = await bcrypt.hash(password, 10)
 
-//   const user = await (new User(name, email, hashedPassword))
-//   res.status(201).json(user)
-// })
+  User.create({ name: name, email: email, password: hashedPassword }, function (err, small) {
+    if (err) return handleError(err)
+  })
+
+  res.status(201).json(user)
+})
 
 export default handler

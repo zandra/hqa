@@ -6,15 +6,15 @@ import { makeStyles } from '@material-ui/core'
 import { wiki } from '../store'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-  },
+  root: {},
   container: {
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'flex-start'
   },
   card: {
     maxWidth: '50px',
-    paddingBottom: '50px'
+    paddingBottom: '50px',
+    margin: '20px'
   }
 }
 ))
@@ -36,11 +36,11 @@ const Index = (props) => {
     <Layout className={classes.root}>
       <Hero src="/logo1.png"/>
       <div className={classes.container}>
-        {wiki.map(w =>
+        {wiki.map(topic =>
           <TopicCard
-            key={w.key}
-            name={w.title}
-            src={w.route}
+            key={topic.key}
+            name={topic.title}
+            src={topic.route}
             className={classes.card}
           />
         ) }
