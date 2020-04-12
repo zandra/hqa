@@ -1,21 +1,18 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 mongoose.Promise = global.Promise
-mongoose.set('useCreateIndex', true)
 
 const User = require('../../models/users')
 
 const userSeed = [
   {
-    first_name: 'Demo',
-    last_name: 'User',
+    name: 'Demo User',
     email: 'demo@hqa.com',
     password: 'password'
   },
   {
-    first_name: 'Second',
-    last_name: 'User',
+    name: 'Second User',
     email: 'second@hqa.com',
     password: 'password'
   }
@@ -24,14 +21,14 @@ const userSeed = [
 const deleteData = async () => {
   console.log('☔️ ☔️ ... dropping data')
   await User.deleteMany()
-  console.log('Data deleted. To seed, run\n\n\t npm run userseed\n\n')
+  console.log('Data deleted. To seed, run\n\n\t npm run user:seed\n\n')
   process.exit()
 }
 
 const seedData = async () => {
   try {
     await User.insertMany(userSeed)
-    console.log(' done 🌱 🌱 🌱 To drop data, run\n\n\t npm run userdrop\n\n')
+    console.log(' done 🌱 🌱 🌱 To drop data, run\n\n\t npm run user:drop\n\n')
     process.exit()
   } catch (e) {
     console.log('Error 🐼')

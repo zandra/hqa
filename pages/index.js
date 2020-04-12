@@ -1,4 +1,4 @@
-// Root > index.js
+// Root, index.js
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import TopicCard from '../components/TopicCard'

@@ -1,6 +1,6 @@
 require('dotenv').config()
 module.exports = {
-  publicRuntimeConfig: {
+  env: {
     MONGO_URI: process.env.MONGO_URI
   }
 }

@@ -1,7 +1,12 @@
-import connectDb from '../../../utils/database.js'
+import nextConnect from 'next-connect'
+import middleware from '../../../utils/middleware.js'
 import Report from '../../../models/reports'
 
-const handler = (req, res) => {
+const handler = nextConnect()
+
+handler.use(middleware)
+
+handler.get(async (req, res) => {
   Report.find({})
     .then(data => {
       res.status(200).json(data)
@@ -10,5 +15,5 @@ const handler = (req, res) => {
       console.log(e)
       res.status(401).send('.... awkward 🐢')
     })
-}
-export default connectDb(handler)
+})
+export default handler

@@ -10,7 +10,8 @@
         "standard"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "warn"
+        "react/react-in-jsx-scope": "warn",
+        "no-useless-return": "warn"
     },
     "globals": {
         "Atomics": "readonly",
