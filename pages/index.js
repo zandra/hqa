@@ -1,4 +1,5 @@
-// Root > index.js
+// Root, index.js
+// import passport from '../utils/passport'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import TopicCard from '../components/TopicCard'
@@ -6,15 +7,15 @@ import { makeStyles } from '@material-ui/core'
 import { wiki } from '../store'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-  },
+  root: {},
   container: {
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'flex-start'
   },
   card: {
     maxWidth: '50px',
-    paddingBottom: '50px'
+    paddingBottom: '50px',
+    margin: '20px'
   }
 }
 ))
@@ -36,11 +37,11 @@ const Index = (props) => {
     <Layout className={classes.root}>
       <Hero src="/logo1.png"/>
       <div className={classes.container}>
-        {wiki.map(w =>
+        {wiki.map(topic =>
           <TopicCard
-            key={w.key}
-            name={w.title}
-            src={w.route}
+            key={topic.key}
+            name={topic.title}
+            src={topic.route}
             className={classes.card}
           />
         ) }
@@ -48,4 +49,20 @@ const Index = (props) => {
     </Layout>
   )
 }
+
+// export async function getServerSideProps ({ req, res }) {
+//   const handler = nextConnect()
+//   if (!req.user) next()
+
+//   handler.use(passport.initialize())
+//   try {
+//     await handler.apply(req, res)
+//   } catch (e) {
+//     // handle the error
+//   }
+//   // do something with the upgraded req and res
+//   return {
+//     props: { user: req.user } // will be passed to the page component as props
+//   }
+// }
 export default Index

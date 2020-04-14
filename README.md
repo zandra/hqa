@@ -39,4 +39,4 @@ Technical docs do the same for their end users, web developers and software engi
 #### Wiki Sections
 
 #### Other
-- Hook up MongoDB 
+- Hook up MongoDB database

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Link } from '../wrapped'
+import { Link, ListItemLink } from '../wrapped'
 import { makeStyles, useMediaQuery } from '@material-ui/core/styles'
-import { Grid, AppBar, Toolbar, Menu, MenuItem, IconButton, Typography } from '@material-ui/core'
+import { Grid, AppBar, Toolbar, Menu, IconButton, Typography, MenuItem } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Brightness2Icon from '@material-ui/icons/Brightness2' // Moon -> show on light
 import Brightness7Icon from '@material-ui/icons/Brightness7' // Sun -> show on dark
+import { useUser } from '../../utils/helpers'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,13 +47,22 @@ export default function Header () {
     // console.log(document.documentElement.style)
   })
 
+  const [user, { mutate }] = useUser()
+
+  const handleLogout = async () => {
+    await fetch('/api/authorization', {
+      method: 'DELETE'
+    })
+    mutate(null)
+  }
+
   // Account menu drawer
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
   }
-
+  // Handles Account menu drawer
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -113,8 +123,8 @@ export default function Header () {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>Use Extensions</MenuItem>
+              <ListItemLink href="/profile" primary="Profile"/>
+              <ListItemLink href="/login" onClick={handleLogout} primary="Logout"/>
             </Menu>
           </div>
         )}

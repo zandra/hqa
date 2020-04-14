@@ -2,7 +2,9 @@ import { Container, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   hero: {
-    textAlign: 'center',
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
     marginBottom: '60px'
   }
 }))

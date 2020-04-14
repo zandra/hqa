@@ -19,7 +19,7 @@ export default function TopicCard (props) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="red" gutterBottom>
+        <Typography className={classes.title} color="secondary" gutterBottom>
           {props.name}
         </Typography>
         <CardActions>
