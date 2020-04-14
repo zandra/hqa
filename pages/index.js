@@ -1,4 +1,5 @@
 // Root, index.js
+// import passport from '../utils/passport'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import TopicCard from '../components/TopicCard'
@@ -48,4 +49,20 @@ const Index = (props) => {
     </Layout>
   )
 }
+
+// export async function getServerSideProps ({ req, res }) {
+//   const handler = nextConnect()
+//   if (!req.user) next()
+
+//   handler.use(passport.initialize())
+//   try {
+//     await handler.apply(req, res)
+//   } catch (e) {
+//     // handle the error
+//   }
+//   // do something with the upgraded req and res
+//   return {
+//     props: { user: req.user } // will be passed to the page component as props
+//   }
+// }
 export default Index

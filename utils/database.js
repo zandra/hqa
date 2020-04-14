@@ -1,24 +1,13 @@
-import mongoose from 'mongoose'
+import { MongoClient } from 'mongodb'
 
-// from https://hoangvvo.com/blog/migrate-from-express-js-to-next-js-api-routes/
-
-// const connectDb = handler => async (req, res) => {
-//   if (mongoose.connections[0].readyState) return handler(req, res)
-
-//   await mongoose.connect(process.env.MONGO_URI, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true
-//   })
-//   return handler(req, res)
-// }
+const client = new MongoClient(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 
 export default async function database (req, res, next) {
-  if (mongoose.connections[0].readyState) return next()
-  await mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-  })
+  if (!client.isConnected()) await client.connect()
+  req.dbClient = client
+  req.db = client.db(process.env.DB_NAME)
   return next()
 }

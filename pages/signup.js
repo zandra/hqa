@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { makeStyles, Container, Paper, Typography } from '@material-ui/core'
 import { Link } from '../components/wrapped'
 import { useUser } from '../utils/helpers'
@@ -35,7 +35,13 @@ const useStyles = makeStyles(theme => ({
 export default function Signup () {
   const classes = useStyles()
 
-  const [user] = useUser()
+  const [user, { mutate }] = useUser()
+  const [errorMsg, setErrorMsg] = useState('')
+
+  useEffect(() => {
+    // redirect to home when user is created or if authenticated
+    if (user) Router.replace('/')
+  }, [user])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -45,19 +51,20 @@ export default function Signup () {
       name: e.currentTarget.name.value,
       password: e.currentTarget.password.value
     }
-    console.log(body)
 
     const res = await fetch('/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     })
-    if (res.status === 201) {
-      const userObj = await res.json()
-    } else {
-      // setErrorMsg(await res.text())
-      console.log('What happened?')
-    }
+    // if (res.status === 201) {
+    //   const userObj = await res.json()
+    //   mutate(userObj)
+    //   // res.json(userObj)
+    //   res.end('User created')
+    // } else {
+    //   setErrorMsg(await res.text())
+    // }
   }
 
   return (
@@ -68,7 +75,7 @@ export default function Signup () {
       <Container className={classes.root} fixed >
         <Paper className={classes.paper}>
           <Typography variant="h4" className={classes.heading} gutterBottom >Sign Up</Typography>
-          <form className={classes.form} onSubmit={handleSubmit} fullWidth>
+          <form className={classes.form} onSubmit={handleSubmit} >
             <label htmlFor="name">
               <input
                 id="name"

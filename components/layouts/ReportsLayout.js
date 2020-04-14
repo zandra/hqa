@@ -4,19 +4,20 @@ import { Grid, Typography, Paper, makeStyles, Collapse, List, ListItem, ListItem
 import Layout from '../Layout'
 import WikiNav from './WikiNav'
 import { ListItemLink } from '../../components/wrapped'
-import theme from '../../theme'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    spacing: theme.spacing(2)
-  },
-  paper: {
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary
-  }
-}))
+const useStyles = makeStyles(theme => {
+  return ({
+    container: {
+      spacing: theme.spacing(2)
+    },
+    paper: {
+      padding: theme.spacing(2),
+      color: theme.palette.text.secondary
+    }
+  })
+})
 
 // eslint-disable-next-line react/display-name
 export default function ReportsLayout (props) {
