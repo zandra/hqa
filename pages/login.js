@@ -39,7 +39,9 @@ export default function Login () {
   const [logged, setLogged] = useState() // not sure if this is needed on this page
   const [errorMsg, setErrorMsg] = useState('')
   const router = useRouter()
-  const [user, { mutate }] = useUser()
+  const [user] = useUser()
+
+  const { name, email } = user || { name: '🙅', email: '🙅' }
 
   // useEffect(() => {
   //   // redirect to home if user is authenticated
@@ -66,33 +68,43 @@ export default function Login () {
   }
 
   return (
-    <Container className={classes.root} fixed >
-      <Paper className={classes.paper}>
-        <Typography variant="h4" className={classes.heading} gutterBottom >Login</Typography>
-        <form className={classes.form} onSubmit={onSubmit}>
-          {errorMsg ? <p className={classes.error}>{errorMsg}</p> : null}
-          <label htmlFor="email">
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Email address"
-              className={classes.input}
-            />
-          </label>
-          <label htmlFor="password">
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={classes.input}
-            />
-          </label>
-          <button type="submit">Sign in</button>
-        </form>
-        <Typography variant="body1" className={classes.text} align='right' ><Link href="/signup">Create an account</Link></Typography>
-      </Paper>
-    </Container>
+    <>
+      <Container className={classes.root} fixed >
+        <Paper className={classes.paper}>
+          <Typography variant="h4" className={classes.heading} gutterBottom >Login</Typography>
+          <form className={classes.form} onSubmit={onSubmit}>
+            {errorMsg ? <p className={classes.error}>{errorMsg}</p> : null}
+            <label htmlFor="email">
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Email address"
+                className={classes.input}
+              />
+            </label>
+            <label htmlFor="password">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                className={classes.input}
+              />
+            </label>
+            <button type="submit">Sign in</button>
+          </form>
+          <Typography variant="body1" className={classes.text} align='right' ><Link href="/signup">Create an account</Link></Typography>
+        </Paper>
+        <Paper className={classes.paper}>
+          <Typography variant="body1">Current User</Typography>
+          <ul>
+            <li>{name}</li>
+            <li>{email}</li>
+          </ul>
+        </Paper>
+      </Container>
+
+    </>
   )
 }
