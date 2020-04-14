@@ -10,27 +10,22 @@ const useStyles = makeStyles(theme => ({
   root: {},
   container: {
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    spacing: theme.spacing(2)
   },
   card: {
     maxWidth: '50px',
     paddingBottom: '50px',
-    margin: '20px'
+    margin: '20px',
+    spacing: theme.spacing(2)
   }
-}
-))
+}))
 
 const Index = (props) => {
   const classes = useStyles()
   // react Hooks for user state
-
-  // login page = ?
-  // build out User
   // * stlye page, for userState = logged
   // * index.getInitialProps for when userState is logged in
-  // * ?? where are you going to store your users
-  // * ?? what authentication will you use\
-  //
   // misc
   // * Hero > style the container to be full screen size
   return (

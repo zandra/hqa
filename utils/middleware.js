@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect'
 import database from './database'
 import session from './session'
-import passport from './passport'
+import passport from '../utils/passport'
 
 const middleware = nextConnect()
 

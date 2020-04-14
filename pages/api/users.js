@@ -28,17 +28,15 @@ handler.post(async (req, res) => {
 
   const user = await req.db
     .collection('users')
-    .insertOne({ email, password: hashedPassword, name })
+    .insertOne({ name, email, password: hashedPassword })
     .then(({ ops }) => ops[0])
 
   // Note: passport.authenticate() middleware invokes req.login() automatically.
   req.logIn(user, (err) => {
     if (err) throw err
     res.status(201).json({
-      user: (req.user)
+      user: extractUser(req.user)
     })
-    // if (err) throw err
-    // return res.redirect('/')
   })
 })
 

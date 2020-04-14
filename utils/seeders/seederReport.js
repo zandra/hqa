@@ -9,14 +9,14 @@ const reportData = require('../../data/reportData.json')
 const deleteData = async () => {
   console.log('☔️ ☔️ ... dropping data')
   await Report.deleteMany()
-  console.log('REPORT data deleted. To seed, run\n\n\t npm run seed\n\n')
+  console.log('REPORT data deleted. To seed, run\n\n\t npm run report:seed\n\n')
   process.exit()
 }
 
 const seedData = async () => {
   try {
     await Report.insertMany(reportData)
-    console.log(' 🌱 🌱 🌱 done. to delete data, run\n\n\t npm run unseed\n\n')
+    console.log(' 🌱 🌱 🌱 done. to delete data, run\n\n\t npm run report:drop\n\n')
     process.exit()
   } catch (e) {
     console.log('Error 🐼')

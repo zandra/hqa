@@ -9,7 +9,6 @@ import { useUser } from '../../utils/helpers'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -34,6 +33,13 @@ export default function Header () {
   const classes = useStyles()
   const [logged, setLogged] = useState(true)
 
+  const [user] = useUser()
+  const { name, email } = user || {}
+
+  useEffect(() => {
+    if (!user) Router.push('/login')
+  }, [user])
+
   // Light : Dark mode
   const [mode, setMode] = useState('light')
 
@@ -47,10 +53,11 @@ export default function Header () {
     // console.log(document.documentElement.style)
   })
 
-  const [user, { mutate }] = useUser()
+  // Logout
+  const [, { mutate }] = useUser()
 
   const handleLogout = async () => {
-    await fetch('/api/authorization', {
+    await fetch('/api/authenticate', {
       method: 'DELETE'
     })
     mutate(null)
@@ -124,7 +131,8 @@ export default function Header () {
               onClose={handleClose}
             >
               <ListItemLink href="/profile" primary="Profile"/>
-              <ListItemLink href="/login" onClick={handleLogout} primary="Logout"/>
+              {/* <ListItemLink onClick={handleLogout} primary="Logout"/> */}
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
         )}
