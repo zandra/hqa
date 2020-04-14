@@ -39,19 +39,19 @@ export default function Login () {
   const [logged, setLogged] = useState() // not sure if this is needed on this page
   const [errorMsg, setErrorMsg] = useState('')
   const router = useRouter()
-  const [user] = useUser()
+  const [user, { mutate }] = useUser()
 
-  const { name, email } = user || { name: '🙅', email: '🙅' }
+  const { name, email } = user || { name: '🐼', email: '🐼' }
 
-  // useEffect(() => {
-  //   // redirect to home if user is authenticated
-  //   if (user) router.push('/')
-  // }, [user])
+  useEffect(() => {
+    // redirect to home if user is authenticated
+    if (user) router.push('/')
+  }, [user])
 
   async function onSubmit (e) {
     e.preventDefault()
     const body = {
-      username: e.currentTarget.email.value,
+      email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
     }
     const res = await fetch('/api/authenticate', {

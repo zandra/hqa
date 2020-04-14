@@ -13,6 +13,4 @@ const reportSchema = new mongoose.Schema({
   configs: []
 })
 
-const Report = mongoose.models.Report || mongoose.model('Report', reportSchema)
-
-module.exports = Report
+module.exports = mongoose.model('Report', reportSchema)
