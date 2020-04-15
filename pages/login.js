@@ -1,4 +1,4 @@
-import { makeStyles, Container, Paper, Typography, Input, InputBase } from '@material-ui/core'
+import { makeStyles, Container, Paper, Typography, Button as MuiButton } from '@material-ui/core'
 import { Link } from '../components/wrapped'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -29,19 +29,21 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     width: '350px',
-    height: '30px',
+    height: '35px',
     margin: '5px'
+  },
+  panda: {
+    align: 'center'
   }
 }))
 
 export default function Login () {
   const classes = useStyles()
-  const [logged, setLogged] = useState() // not sure if this is needed on this page
   const [errorMsg, setErrorMsg] = useState('')
   const router = useRouter()
   const [user, { mutate }] = useUser()
 
-  const { name, email } = user || { name: '🐼', email: '🐼' }
+  const { name, email } = user || {}
 
   useEffect(() => {
     // redirect to home if user is authenticated
@@ -61,9 +63,9 @@ export default function Login () {
     })
     if (res.status === 200) {
       const userObj = await res.json()
-      mutate(userObj) // i don't understand what this mutate is doing
+      mutate(userObj)
     } else {
-      setErrorMsg('error ...' + JSON.stringify(body))
+      setErrorMsg('Wrong Username or Password')
     }
   }
 
@@ -92,19 +94,22 @@ export default function Login () {
                 className={classes.input}
               />
             </label>
-            <button type="submit">Sign in</button>
+            <MuiButton type="submit">Sign in</MuiButton>
           </form>
-          <Typography variant="body1" className={classes.text} align='right' ><Link href="/signup">Create an account</Link></Typography>
+          <Typography variant="body1" className={classes.text} align='right'>
+            <Link href="/signup">Create an account</Link>
+          </Typography>
         </Paper>
         <Paper className={classes.paper}>
-          <Typography variant="body1">Current User</Typography>
-          <ul>
-            <li>{name}</li>
-            <li>{email}</li>
-          </ul>
+          <Typography variant="body2">Current User</Typography>
+          { !user ? <Typography align='center' className={classes.panda}>🐼🐼🐼</Typography>
+            : <ul>
+              <li>{name}</li>
+              <li>{email}</li>
+            </ul>
+          }
         </Paper>
       </Container>
-
     </>
   )
 }

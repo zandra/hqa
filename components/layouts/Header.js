@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Link, ListItemLink } from '../wrapped'
 import { makeStyles, useMediaQuery } from '@material-ui/core/styles'
-import { Grid, AppBar, Toolbar, Menu, IconButton, Typography, MenuItem } from '@material-ui/core'
+import { Grid, AppBar, Toolbar, Menu, IconButton, Typography, Button, ListItem as MuiListItem } from '@material-ui/core'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Brightness2Icon from '@material-ui/icons/Brightness2' // Moon -> show on light
 import Brightness7Icon from '@material-ui/icons/Brightness7' // Sun -> show on dark
@@ -31,13 +32,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header () {
   const classes = useStyles()
+  const router = useRouter()
   const [logged, setLogged] = useState(true)
-
-  const [user] = useUser()
-  const { name, email } = user || {}
+  const [user, { mutate }] = useUser()
 
   useEffect(() => {
-    if (!user) Router.push('/login')
+    // redirect to home if user is authenticated
+    if (!user) router.push('/login')
   }, [user])
 
   // Light : Dark mode
@@ -53,9 +54,7 @@ export default function Header () {
     // console.log(document.documentElement.style)
   })
 
-  // Logout
-  const [, { mutate }] = useUser()
-
+  // Handle Logout (Profile drawer)
   const handleLogout = async () => {
     await fetch('/api/authenticate', {
       method: 'DELETE'
@@ -104,38 +103,35 @@ export default function Header () {
             }
           </IconButton>
         </div>
-        {logged && (
-          <div className={classes.profile}>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <ListItemLink href="/profile" primary="Profile"/>
-              {/* <ListItemLink onClick={handleLogout} primary="Logout"/> */}
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-          </div>
-        )}
+        <div className={classes.profile}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right'
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right'
+            }}
+            open={open}
+            onClose={handleClose}
+          >
+            <ListItemLink href="/profile" primary="Profile"/>
+            <MuiListItem button onClick={handleLogout} color="secondary">Logout</MuiListItem>
+          </Menu>
+        </div>
       </Toolbar>
     </AppBar>
   )

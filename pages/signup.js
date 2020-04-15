@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { makeStyles, Container, Paper, Typography } from '@material-ui/core'
+import { makeStyles, Container, Paper, Typography, Button } from '@material-ui/core'
 import { Link } from '../components/wrapped'
 import { useUser } from '../utils/helpers'
 import Router from 'next/router'
@@ -27,8 +27,10 @@ const useStyles = makeStyles(theme => ({
   },
   input: {
     width: '350px',
-    height: '30px',
-    margin: '5px'
+    height: '35px',
+    margin: '5px',
+    border: '1px solid grey',
+    paddingLeft: '1px'
   }
 }))
 
@@ -57,14 +59,12 @@ export default function Signup () {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     })
-    // if (res.status === 201) {
-    //   const userObj = await res.json()
-    //   mutate(userObj)
-    //   // res.json(userObj)
-    //   res.end('User created')
-    // } else {
-    //   setErrorMsg(await res.text())
-    // }
+    if (res.status === 201) {
+      const userObj = await res.json()
+      mutate(userObj)
+    } else {
+      setErrorMsg(await res.text())
+    }
   }
 
   return (
@@ -103,7 +103,7 @@ export default function Signup () {
                 className={classes.input}
               />
             </label>
-            <button type="submit">Sign up</button>
+            <Button type="submit">Sign up</Button>
           </form>
           <Typography variant="body1" className={classes.text}>Already have an account? <Link href="/login">Login</Link></Typography>
         </Paper>

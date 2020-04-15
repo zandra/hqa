@@ -1,5 +1,4 @@
 import nextConnect from 'next-connect'
-import { session } from 'next-session'
 import passport from '../../utils/passport'
 import middleware from '../../utils/middleware'
 import { extractUser } from '../../utils/helpers'
@@ -13,8 +12,9 @@ handler.post(passport.authenticate('local'), (req, res) => {
 })
 
 handler.delete((req, res) => {
-  console.log('goodbye')
   req.logOut()
+  console.log('goodbye')
+  req.session.end()
   res.status(204).end()
 })
 

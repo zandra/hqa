@@ -3,8 +3,6 @@ import bcrypt from 'bcryptjs'
 import { Strategy as LocalStrategy } from 'passport-local'
 import { ObjectId } from 'mongodb'
 
-// { usernameField: 'email', passwordField: 'password', passReqToCallback: true },
-
 passport.serializeUser((user, done) => {
   done(null, user._id.toString())
 })
