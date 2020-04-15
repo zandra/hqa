@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { reports, ipsum } from '../../../store'
-import { Grid, Typography, makeStyles } from '@material-ui/core'
+import { Typography, makeStyles } from '@material-ui/core'
 import { ReportsLayout } from '../../../components/layouts'
 import { ReportCard, ReportFieldsCard } from '../../../components/reports'
 
@@ -30,7 +30,7 @@ export default function ShippingReport (props) {
       />
       <ReportFieldsCard
         title={`${report.title} Field List`}
-        // fields={[...report.fields]}
+        fields={report.fields ? [...report.fields] : ' '}
         className={classes.card}
       />
     </ReportsLayout>

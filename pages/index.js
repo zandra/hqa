@@ -3,14 +3,14 @@ import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import TopicCard from '../components/TopicCard'
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, Container } from '@material-ui/core'
 import { wiki } from '../store'
 
 const useStyles = makeStyles(theme => ({
   root: {},
   container: {
     display: 'flex',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-around',
     spacing: theme.spacing(2)
   },
   card: {
@@ -31,7 +31,7 @@ const Index = (props) => {
   return (
     <Layout className={classes.root}>
       <Hero src="/logo1.png"/>
-      <div className={classes.container}>
+      <Container className={classes.container}>
         {wiki.map(topic =>
           <TopicCard
             key={topic.key}
@@ -40,7 +40,7 @@ const Index = (props) => {
             className={classes.card}
           />
         ) }
-      </div>
+      </Container>
     </Layout>
   )
 }

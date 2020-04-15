@@ -1,6 +1,6 @@
 [
   {
-  "key": "rpt",
+  "key": "reports",
   "title": "Reports",
   "subtopics": ["Shipping Reports", "Product Sales", "Inventory Reports"],
   "route": "/wiki/reports"
@@ -16,5 +16,17 @@
     "title": "Branded Tracking",
     "subtopics": ["Editor", "Config"],
     "route": "/wiki/bt"
+  },
+  {
+    "key": "stores",
+    "title": "Store Integrations",
+    "subtopics": ["Editor", "Config"],
+    "route": "/wiki/stores"
+  },
+  {
+    "key": "ship",
+    "title": "Shipping",
+    "subtopics": ["Editor", "Config"],
+    "route": "/wiki/shipping"
   }
 ]
