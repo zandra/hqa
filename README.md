@@ -10,7 +10,7 @@ Technical docs do the same for their end users, web developers and software engi
 
 ---
 
-## Technologies 
+## Stack 
 - [React](https://reactjs.org/): for ~basically everything~ user interface
 - [Next JS](https://nextjs.org/): for page routing and data rendering
 - [Material UI](https://material-ui.com/): for component styling
@@ -36,7 +36,13 @@ Technical docs do the same for their end users, web developers and software engi
 
 ---
 ### Done
-#### Wiki Sections
-
 #### Other
 - Hook up MongoDB database
+- Setup user authentication with Passport
+
+---
+### Credits
+
+- [Hoang V. Vo: Full-fledged app with Next.js and MongoDB](https://hoangvvo.com/blog/full-fledged-app-with-next-js-and-mongodb-part-1/)
+
+- [Passport Serialize/Deserialize](https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize)

@@ -1,29 +1,55 @@
 import Head from 'next/head'
-import Router from 'next/router'
 import { Fragment, useEffect } from 'react'
-import { Container, Typography } from '@material-ui/core'
+import { Container, Typography, Paper, Button, makeStyles } from '@material-ui/core'
 import { Header } from '../components/layouts'
 import { useUser } from '../utils/helpers'
+import { useRouter } from 'next/router'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    maxWidth: '500px',
+    marginTop: '100px'
+  },
+  paper: {
+    margin: '20px',
+    padding: '20px'
+  },
+  header: {
+    marginBottom: '20px'
+  }
+}))
 
 export default function Profile () {
-  const [user] = useUser()
-  const { name, email } = user || { name: '🐼', email: '🐼' }
+  const classes = useStyles()
+  const router = useRouter()
+  const [user, { mutate }] = useUser()
 
   useEffect(() => {
-    if (!user) Router.push('/login')
+    // redirect to home if user is authenticated
+    if (!user) router.push('/login')
   }, [user])
 
+  // Handle Logout (Profile drawer)
+  const handleLogout = async () => {
+    await fetch('/api/authenticate', {
+      method: 'DELETE'
+    })
+    mutate(null)
+  }
   return (
     <Fragment>
-      <Head>
-        <title>{name}</title>
-      </Head>
       <Header />
-      <Container>
-        <ul>
-          <li><Typography>Name: {name}</Typography></li>
-          <li><Typography>email: {email}</Typography></li>
-        </ul>
+      <Container className={classes.root}>
+        <Paper className={classes.paper}>
+          <Typography variant="h5" className={classes.header}>Current User</Typography>
+          { !user ? <Typography align='center'>🐼🐼🐼</Typography>
+            : <>
+              <Typography>Name: {user.name}</Typography>
+              <Typography>Email: {user.email}</Typography>
+              <Button color="primary" onClick={handleLogout}>Logout</Button>
+            </>
+          }
+        </Paper>
       </Container>
     </Fragment>
   )
