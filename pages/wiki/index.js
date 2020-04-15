@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary
+  },
+  text: {
+    marginTop: '20px'
   }
 }))
 
@@ -31,8 +34,10 @@ const Page = (props) => {
         {/* Second grid-item { middle }:  Selected Topic blurb   */}
         <Grid item xs={8} className={classes.text}>
           <Paper className={classes.paper}>
-            <Typography variant='h4' >Shipping Easy</Typography>
-            <Typography paragraph>{ipsum.long}</Typography>
+            <div>
+              <Typography variant='h4' >Shipping Easy</Typography>
+              <Typography paragraph>{ipsum.long}</Typography>
+            </div>
           </Paper>
         </Grid>
       </Grid>

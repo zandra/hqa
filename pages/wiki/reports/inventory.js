@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   card: {}
 })
 
-function ShippingReport (props) {
+function InventoryReport (props) {
   const classes = useStyles()
   const { query } = useRouter()
 
